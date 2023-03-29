@@ -22,7 +22,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Curriculum <a name="about-project"></a>
+# 📖 Blog-App <a name="about-project"></a>
 
 ** BlogApp ** Is a Ruby on Rails is project that will allow the user to have an account, post a blog, comment and like.
 
@@ -82,8 +82,13 @@ cd curriculum
 ### Usage
 
 To run the project, execute the following command:
-```bash
-ruby main.rb
+1. setup the database:
+```
+rails db:setup
+```
+2. run the rails server:
+```
+rails s
 ```
 
 ### Run tests
