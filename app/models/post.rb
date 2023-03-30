@@ -10,5 +10,5 @@ class Post < ApplicationRecord
   def self.recent_five_comments(title)
     post = Post.find_by(title:).id
     Comment.where(post_id: post).order(created_at: :desc).limit(3)
-end
+  end
 end
