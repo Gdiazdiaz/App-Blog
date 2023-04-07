@@ -1,1 +1,39 @@
-<h1>Specific post</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'post_index' %>
+</head>
+<body>
+<section>
+<div class='main-Container'></div>
+    <div class='main-post-container'>
+        <div class='post-header'>
+            <div class='left-header'>
+                <%= content_tag :span, "Post #", class: 'post-index' %> <%= content_tag :span, @post.id, class: 'post-index' %>
+                <%= content_tag :span, "by", class: 'post-author' %> <%= content_tag :span, @post.author.name, class: 'post-author' %>
+            </div>
+            <div class='right-header'>
+                <%= content_tag :span, 'Likes:', class: 'post-counter-label' %> <%= content_tag :span, @post.likesCounter, class: 'post-counter' %>
+                <%= content_tag :span, 'Comments:', class: 'post-counter-label' %> <%= content_tag :span, @post.commentsCounter, class: 'post-counter' %>
+            </div>
+        </div><br>
+        <div class='post-text'>
+            <%= content_tag :span, @post.text, class: 'post-text' %><br>
+        </div>
+    </div>
+    <div class='comments-inpost-container'>
+        <% comments = Post.recent_five_comments(@post.title) %>
+            <% comments.each do |comment| %>
+                <div class= 'comment-inpost-container'>
+                    <%= content_tag :span, "#{comment.author.name}:", class: 'comment-username' %>
+                    <%= content_tag :span, comment.text, class: 'comment-text' %>
+                    </div><br>
+            <% end %>
+    </div>
+</section>
+    
+</body>
+</html>

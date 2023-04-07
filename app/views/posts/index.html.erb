@@ -1,1 +1,49 @@
-<h1>List of posts</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag 'posts_index' %>
+</head>
+<body>
+<section>
+<div class='general-container'>
+<div class='header'>
+    <%= image_tag @user.photo, class: 'profile-pic', alt: 'profile pic' %>
+        <div class="user_details_container">
+            <%= content_tag :span, 'Name:', class: 'name-label' %> <%= content_tag :span, @user.name, class: 'name' %><br>
+            <%= content_tag :span, 'Number of posts:', class: 'counter-label' %> <%= content_tag :span, @user.postsCounter, class: 'counter' %>
+        </div>
+</div>
+<div class='posts-container'>
+    <% @posts.each_with_index do |post, index| %>
+        <%= link_to user_post_path(post.author, post) do %>
+            <div class= 'post-show-container'>
+                <%= content_tag :span, "Post ##{index+1} - Title:", class: 'post-title-label' %> <%= content_tag :span, post.title, class: 'post-title' %><br><br>
+                <%= content_tag :span, post.text, class: 'post-show-text' %><br>
+                <div class='lc-counters'>
+                    <%= content_tag :span, 'Likes:', class: 'post-show-counter-label' %> <%= content_tag :span, post.likesCounter, class: 'post-show-counter' %>
+                    <%= content_tag :span, 'Comments:', class: 'post-show-counter-label' %> <%= content_tag :span, post.commentsCounter, class: 'post-show-counter' %>
+                </div>
+            </div>
+            <% end %>
+            <div class='comments-container'>
+                <% comments = Post.recent_five_comments(post.title) %>
+                    <% comments.each do |comment| %>
+                        <div class= 'comment-container'>
+                            <%= content_tag :span, "#{comment.author.name}:", class: 'post-show-username' %>
+                            <%= content_tag :span, comment.text, class: 'post-show-comment' %>
+                        </div><br>
+                    <% end %>
+                </div>
+    <% end %>
+</div>
+<div class='button-container'>
+    <button class='button'>Pagination</button>
+    </div>
+</div>
+</section>
+    
+</body>
+</html>

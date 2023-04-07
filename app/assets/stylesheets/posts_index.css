@@ -1,0 +1,50 @@
+.general-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-show-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #000;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 20px;
+  padding: 25px;
+}
+
+.lc-counters {
+  align-self: flex-end;
+}
+
+.post-show-text {
+  font-size: 25px;
+}
+
+.post-show-counter-label {
+  font-size: 20px;
+}
+
+.post-show-counter {
+  font-size: 20px;
+}
+
+.comments-container {
+  border: #000 solid 2px;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 25px;
+}
+
+.post-show-username {
+  font-weight: bold;
+}
+
+.button-container {
+  align-self: center;
+  margin-top: 25px;
+}
+
+.button {
+  align-self: center;
+}

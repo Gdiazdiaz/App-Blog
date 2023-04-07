@@ -1,0 +1,23 @@
+.main-Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-post-container {
+  border: solid 2px #000;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 25px;
+}
+
+.comments-inpost-container {
+  border: solid 2px #000;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 25px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+}
