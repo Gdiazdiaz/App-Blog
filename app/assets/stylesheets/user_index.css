@@ -1,0 +1,62 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.name-label {
+  padding-right: 20px;
+  align-self: center;
+  font-size: 50px;
+}
+
+.name {
+  align-self: center;
+  font-size: 50px;
+}
+
+.counter-label {
+  padding-left: 20px;
+  align-self: flex-end;
+  font-size: 25px;
+}
+
+.counter {
+  align-self: flex-end;
+  font-size: 25px;
+}
+
+.bio-container {
+  border: 2px solid #000;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 20px;
+}
+
+.bio-label {
+  font-weight: bold;
+}
+
+.post-container {
+  border: #000 2px solid;
+  padding: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.post-title-label {
+  font-weight: bold;
+}
+
+.button {
+  margin-left: 25px;
+}
+
+.button-container {
+  align-self: center;
+}
