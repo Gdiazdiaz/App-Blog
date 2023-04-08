@@ -10,9 +10,9 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.save
-        format.html { redirect_to user_post_path(@user, @post), notice: 'Like was successfully added.'}
+        format.html { redirect_to user_post_path(@user, @post), notice: 'Like was successfully added.' }
       else
-        format.html { render :new}
+        format.html { render :new }
       end
     end
   end

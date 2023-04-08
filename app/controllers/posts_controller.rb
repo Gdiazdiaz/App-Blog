@@ -17,21 +17,15 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    title = post_params[:title]
-  if @user.posts.where(title: title).exists?
-    i = 2
-    while @user.posts.where(title: "#{title}-#{i}").exists?
-      i += 1
-    end
-    title = "#{title}-#{i}"
-  end
     @post = ApplicationController.current_user(@user.id).posts.new(post_params)
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_path(ApplicationController.current_user(@user.id)), notice: 'Post was successfully created.'}
+        format.html do
+          redirect_to user_path(ApplicationController.current_user(@user.id)), notice: 'Post was successfully created.'
+        end
       else
-        format.html { render :new}
+        format.html { render :new }
       end
     end
   end
@@ -40,14 +34,13 @@ class PostsController < ApplicationController
 
   def post_params
     title = params[:post][:title]
-  if @user.posts.where(title: title).exists?
-    i = 2
-    while @user.posts.where(title: "#{title}-#{i}").exists?
-      i += 1
-    end
-    title = "#{title}-#{i}"
+    title = find_unique_title(title) if @user.posts.where(title:).exists?
+    params.require(:post).permit(:title, :text).merge(title:)
   end
-  params.require(:post).permit(:title, :text).merge(title: title)
 
+  def find_unique_title(title)
+    i = 2
+    i += 1 while @user.posts.where(title: "#{title}-#{i}").exists?
+    "#{title}-#{i}"
   end
 end

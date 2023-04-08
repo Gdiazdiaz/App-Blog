@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_post_path(@user, @post), notice: 'Comment was successfully added.'}
+        format.html { redirect_to user_post_path(@user, @post), notice: 'Comment was successfully added.' }
       else
-        format.html { render :new}
+        format.html { render :new }
       end
     end
   end
