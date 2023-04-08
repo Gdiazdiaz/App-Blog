@@ -6,6 +6,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @comment = @post.comments.new
+    @comments = @post.comments
   end
 
   def new
@@ -14,6 +17,14 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
+    title = post_params[:title]
+  if @user.posts.where(title: title).exists?
+    i = 2
+    while @user.posts.where(title: "#{title}-#{i}").exists?
+      i += 1
+    end
+    title = "#{title}-#{i}"
+  end
     @post = ApplicationController.current_user(@user.id).posts.new(post_params)
 
     respond_to do |format|

@@ -4,14 +4,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
-    @post = @user.posts.find(params[:id])
-    @comment = @post.comments.new(comment_params)
-    @comment.author = @current_user
-    
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+    @comment = @post.comments.new(comment_params.merge(author: ApplicationController.current_user(@user.id)))
+    puts @user
+
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.'}
+        format.html { redirect_to user_post_path(@user, @post), notice: 'Comment was successfully added.'}
       else
         format.html { render :new}
       end

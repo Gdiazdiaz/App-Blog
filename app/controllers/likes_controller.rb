@@ -4,23 +4,16 @@ class LikesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
-    @post = @user.posts.find(params[:id])
-    @like = @post.likes.new(like_params)
-    @like.author = @current_user
-    
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @like = @post.likes.build(author: ApplicationController.current_user(@user.id))
+
     respond_to do |format|
       if @like.save
-        format.html { redirect_to @post, notice: 'Like was successfully created.'}
+        format.html { redirect_to user_post_path(@user, @post), notice: 'Like was successfully added.'}
       else
         format.html { render :new}
       end
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:comment).permit(:text)
   end
 end
