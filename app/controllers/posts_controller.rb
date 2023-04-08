@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = ApplicationController.current_user
     @post = @user.posts.new(post_params.merge(author: ApplicationController.current_user))
 
     respond_to do |format|
