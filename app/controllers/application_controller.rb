@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  def self.current_user(id)
-    User.find_by(id:)
+  def self.current_user
+    User.first
   end
 end

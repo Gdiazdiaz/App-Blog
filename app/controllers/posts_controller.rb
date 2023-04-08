@@ -17,12 +17,12 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @post = ApplicationController.current_user(@user.id).posts.new(post_params)
+    @post = @user.posts.new(post_params.merge(author: ApplicationController.current_user))
 
     respond_to do |format|
       if @post.save
         format.html do
-          redirect_to user_path(ApplicationController.current_user(@user.id)), notice: 'Post was successfully created.'
+          redirect_to user_path(@user), notice: 'Post was successfully created.'
         end
       else
         format.html { render :new }
