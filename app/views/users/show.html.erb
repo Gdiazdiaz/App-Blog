@@ -19,6 +19,13 @@
     <div class='bio-container'>
         <%= content_tag :span, 'Bio', class: 'bio-label' %><br><br> <%= content_tag :span, @user.bio, class: 'bio' %>
     </div>
+    <div class='new-post-container'>
+    <%= link_to new_user_post_path(@user) do %>
+        <button class='button'>
+            Add new post
+        </button>
+    <% end %>
+    </div>
     <div class='posts-container'>
         <% @posts.each_with_index do |post, index| %>
                 <div class= 'post-container'>

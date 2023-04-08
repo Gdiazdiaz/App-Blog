@@ -21,10 +21,18 @@
             </div>
         </div><br>
         <div class='post-text'>
-            <%= content_tag :span, @post.text, class: 'post-text' %><br>
+            <%= content_tag :span, @post.text, class: 'post-text' %><br><br>
+            <%= form_with model: @like, url: user_post_likes_path(@user, @post), method: :post, local: true do |form| %>
+                <%= form.submit "Like" %>
+                <% end %>
         </div>
     </div>
     <div class='comments-inpost-container'>
+    <div class='post-comments'>
+  <%= form_with model: @comment, url: user_post_comments_path(@user, @post), method: :post, local: true do |form| %>
+    <label>Text: </label><%= form.text_field :text %>
+    <%= form.submit "Comment" %>
+  <% end %><br>
         <% comments = Post.recent_five_comments(@post.title) %>
             <% comments.each do |comment| %>
                 <div class= 'comment-inpost-container'>
