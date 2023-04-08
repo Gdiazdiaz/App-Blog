@@ -39,6 +39,15 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    title = params[:post][:title]
+  if @user.posts.where(title: title).exists?
+    i = 2
+    while @user.posts.where(title: "#{title}-#{i}").exists?
+      i += 1
+    end
+    title = "#{title}-#{i}"
+  end
+  params.require(:post).permit(:title, :text).merge(title: title)
+
   end
 end
