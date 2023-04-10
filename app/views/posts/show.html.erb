@@ -34,7 +34,7 @@
     <%= form.submit "Comment" %>
   <% end %><br>
         <% comments = Post.recent_five_comments(@post.title) %>
-            <% comments.each do |comment| %>
+        <% comments.includes(:author).each do |comment| %>
                 <div class= 'comment-inpost-container'>
                     <%= content_tag :span, "#{comment.author.name}:", class: 'comment-username' %>
                     <%= content_tag :span, comment.text, class: 'comment-text' %>
