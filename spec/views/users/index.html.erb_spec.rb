@@ -7,9 +7,9 @@ RSpec.describe 'users/index.html.erb', type: :feature do
     visit users_path
   end
 
-    it 'shows the name of all the users' do 
-      expect(page).to have_content(@user.name)
-      expect(page).to have_content(@user2.name)
+  it 'shows the name of all the users' do
+    expect(page).to have_content(@user.name)
+    expect(page).to have_content(@user2.name)
   end
 
   it 'shows the profile picture of each user' do
@@ -27,5 +27,4 @@ RSpec.describe 'users/index.html.erb', type: :feature do
     link.click
     expect(page).to have_current_path(user_path(@user))
   end
-
 end

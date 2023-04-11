@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'posts/show.html.erb', type: :feature do
   before(:each) do
     @user = FactoryBot.create(:user)
-    @post = FactoryBot.create(:post, :author => @user)
-    @comment = FactoryBot.create(:comment, :author => @user, :post => @post)
-    @comment2 = FactoryBot.create(:comment, :author => @user, :post => @post)
-    @comment3 = FactoryBot.create(:comment, :author => @user, :post => @post)
-    @like = FactoryBot.create(:like, :author => @user, :post => @post)
-    @like2 = FactoryBot.create(:like, :author => @user, :post => @post)
+    @post = FactoryBot.create(:post, author: @user)
+    @comment = FactoryBot.create(:comment, author: @user, post: @post)
+    @comment2 = FactoryBot.create(:comment, author: @user, post: @post)
+    @comment3 = FactoryBot.create(:comment, author: @user, post: @post)
+    @like = FactoryBot.create(:like, author: @user, post: @post)
+    @like2 = FactoryBot.create(:like, author: @user, post: @post)
     visit user_post_path(@post.author, @post)
   end
 
