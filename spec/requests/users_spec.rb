@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   describe 'GET /index' do
-    before { get users_path }
+    let(:user) { FactoryBot.create(:user) }
+
+    before { get users_path(user) }
 
     it 'returns http success' do
-      get '/users/index'
+      get '/users'
       expect(response).to have_http_status(:success)
     end
 
@@ -14,7 +16,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('All users')
+      expect(response.body).to include('All our users')
     end
   end
 
@@ -32,7 +34,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('specific user')
+      expect(response.body).to include('Number of posts:')
     end
   end
 end

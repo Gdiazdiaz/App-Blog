@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
     name { Faker::Name }
-    postsCounter { Faker::Number.digit }
+    photo { "https://unsplash.com/photos/F_-0BxGuVvo" }
   end
 end

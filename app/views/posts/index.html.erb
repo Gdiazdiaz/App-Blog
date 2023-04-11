@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag 'posts_index' %>
-</head>
-<body>
 <section>
 <div class='general-container'>
 <div class='header'>
-    <%= image_tag @user.photo, class: 'profile-pic', alt: 'profile pic' %>
+    <%= image_tag @user.photo, class: 'profile-pic', alt: 'profile-pic' %>
         <div class="user_details_container">
             <%= content_tag :span, 'Name:', class: 'name-label' %> <%= content_tag :span, @user.name, class: 'name' %><br>
             <%= content_tag :span, 'Number of posts:', class: 'counter-label' %> <%= content_tag :span, @user.postsCounter, class: 'counter' %>
@@ -44,6 +35,3 @@
     </div>
 </div>
 </section>
-    
-</body>
-</html>
