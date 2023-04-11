@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag 'post_index' %>
-</head>
-<body>
 <section>
 <div class='main-Container'></div>
     <div class='main-post-container'>
@@ -34,7 +25,7 @@
     <%= form.submit "Comment" %>
   <% end %><br>
         <% comments = Post.recent_five_comments(@post.title) %>
-            <% comments.each do |comment| %>
+        <% comments.includes(:author).each do |comment| %>
                 <div class= 'comment-inpost-container'>
                     <%= content_tag :span, "#{comment.author.name}:", class: 'comment-username' %>
                     <%= content_tag :span, comment.text, class: 'comment-text' %>
@@ -42,6 +33,3 @@
             <% end %>
     </div>
 </section>
-    
-</body>
-</html>

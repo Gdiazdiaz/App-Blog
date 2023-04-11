@@ -15,7 +15,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('List of posts')
+      expect(response.body).to include('Name:')
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe 'Posts', type: :request do
     end
 
     it 'includes the correct placeholder text in the response body' do
-      expect(response.body).to include('Specific post')
+      expect(response.body).to include('Post #')
     end
   end
 end

@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag 'users_index' %>
-</head>
-<body>
 <section>
+<h1>All our users<h1>
 <% @users.each do |user| %>
     <%= link_to user_path(user) do %>
     <div class="user_container">
-    <%= image_tag user.photo, class: 'profile-pic', alt: 'profile pic' %>
+    <%= image_tag user.photo, class: 'profile-pic', alt: 'profile-pic' %>
     <div class="user_details_container">
     <%= content_tag :span, 'Name:', class: 'name-label' %> <%= content_tag :span, user.name, class: 'name' %><br>
     <%= content_tag :span, 'Number of posts:', class: 'counter-label' %> <%= content_tag :span, user.postsCounter, class: 'counter' %>
@@ -20,6 +12,3 @@
     <% end %>
     <% end %>
 </section>
-    
-</body>
-</html>

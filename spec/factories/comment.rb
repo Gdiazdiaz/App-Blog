@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :post do
-    title { Faker::Quote }
+  factory :comment do
     text { Faker::Quote }
     association :author, factory: :user
+    association :post, factory: :post
   end
 end
