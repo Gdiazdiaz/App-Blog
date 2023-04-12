@@ -7,7 +7,7 @@
             <%= content_tag :span, 'Number of posts:', class: 'counter-label' %> <%= content_tag :span, @user.postsCounter, class: 'counter' %>
         </div>
     </div>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {turbo_method: :delete} %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "btn btn-container" %>
     <div class='bio-container'>
         <%= content_tag :span, 'Bio', class: 'bio-label' %><br><br> <%= content_tag :span, @user.bio, class: 'bio' %>
     </div>
