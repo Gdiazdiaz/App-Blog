@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes([:author])
@@ -16,13 +18,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @post = @user.posts.new(post_params.merge(author: current_user))
+    @post = Post.new(post_params.merge(author: current_user))
 
     respond_to do |format|
       if @post.save
+        @post.update_posts_counter(current_user.id)
         format.html do
-          redirect_to user_path(@user), notice: 'Post was successfully created.'
+          redirect_to user_path(current_user), notice: 'Post was successfully created.'
         end
       else
         format.html { render :new }
@@ -30,9 +32,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.comments.each(&:destroy)
+    @post.likes.each(&:destroy)
+    respond_to do |f|
+      f.html do
+        if @post.destroy
+          @post.update_posts_counter(params[:user_id])
+          flash[:success] = 'Deleted'
+          redirect_to user_path(params[:user_id])
+        else
+          flash.now[:error] = 'Post could not be deleted'
+          render :show, status: :unprocessable_entity, locals: { post: }
+        end
+      end
+    end
+  end
+
   private
 
   def post_params
+    @user = current_user
     title = params[:post][:title]
     title = find_unique_title(title) if @user.posts.where(title:).exists?
     params.require(:post).permit(:title, :text).merge(title:)

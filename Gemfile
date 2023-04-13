@@ -33,6 +33,8 @@ gem 'jbuilder'
 
 gem 'devise'
 
+gem 'cancancan'
+
 # for encryption
 # EDITOR="code --wait" rails credentials:edit
 
