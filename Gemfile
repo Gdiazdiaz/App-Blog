@@ -35,6 +35,8 @@ gem 'devise'
 
 gem 'cancancan'
 
+gem 'jwt'
+
 # for encryption
 # EDITOR="code --wait" rails credentials:edit
 
