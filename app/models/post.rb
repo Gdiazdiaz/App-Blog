@@ -12,11 +12,9 @@ class Post < ApplicationRecord
     Comment.where(post_id: post).order(created_at: :desc).limit(3)
   end
 
-  after_save :update_posts_counter
-
-  private
-
-  def update_posts_counter
-    author.increment!(:postsCounter)
+  def update_posts_counter(id)
+    user = User.find(id)
+    counter = user.posts.count
+    user.update(postsCounter: counter)
   end
 end

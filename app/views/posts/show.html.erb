@@ -17,6 +17,9 @@
                 <%= form.submit "Like" %>
                 <% end %>
         </div>
+        <div class='delete-btn'>
+        <% if can? :destroy, @post %><%= button_to "Delete", { action: "destroy", id: @post.id }, method: :delete, class: 'delete-btn' %> <% end %>
+        </div>
     </div>
     <div class='comments-inpost-container'>
     <div class='post-comments'>
@@ -29,6 +32,8 @@
                 <div class= 'comment-inpost-container'>
                     <%= content_tag :span, "#{comment.author.name}:", class: 'comment-username' %>
                     <%= content_tag :span, comment.text, class: 'comment-text' %>
+                    <div class='delete-btn'>
+        </div>
                     </div><br>
             <% end %>
     </div>
