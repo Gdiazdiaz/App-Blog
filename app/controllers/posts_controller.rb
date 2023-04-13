@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
-  
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes([:author])
@@ -34,9 +34,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.comments.each do |c|
-      c.destroy
-    end
+    @post.comments.each(&:destroy)
+    @post.likes.each(&:destroy)
     respond_to do |f|
       f.html do
         if @post.destroy

@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @comment.update_comments_counter(@post.id)
         format.html { redirect_to user_post_path(@user, @post), notice: 'Comment was successfully added.' }
       else
         format.html { render :new }
@@ -35,7 +36,7 @@ class CommentsController < ApplicationController
       end
     end
   end
-  
+
   private
 
   def comment_params
