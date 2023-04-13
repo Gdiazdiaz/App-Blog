@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:post_id])
-    @comment = @post.comments.new(comment_params.merge(author: ApplicationController.current_user))
+    @comment = @post.comments.new(comment_params.merge(author: current_user))
     puts @user
 
     respond_to do |format|

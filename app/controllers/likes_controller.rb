@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    @like = @post.likes.build(author: ApplicationController.current_user)
+    @like = @post.likes.build(author: current_user)
 
     respond_to do |format|
       if @like.save
