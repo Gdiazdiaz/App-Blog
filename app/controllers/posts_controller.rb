@@ -34,6 +34,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @post.comments.each do |c|
+      c.destroy
+    end
     respond_to do |f|
       f.html do
         if @post.destroy
