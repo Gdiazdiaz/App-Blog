@@ -91,6 +91,23 @@ rails db:setup
 rails s
 ```
 
+For the API
+To get the users on the browser
+http://127.0.0.1:3000/users
+To get a specific user
+http://127.0.0.1:3000/users/:user_id
+To get the posts for a user
+http://127.0.0.1:3000/users/:user_id/posts
+To get a specific post
+http://127.0.0.1:3000/users/:user_id/posts/:post_id
+To get the comments of a post
+http://127.0.0.1:3000/users/:user_id/posts/:post_id/comments
+To post a comment send a POST request with the format
+{
+  "author_id": user_id, Note: :user_id must be the id of the user who creates the comment.
+  "text": "your comment"
+ }
+
 ### Run tests
 
 ```
@@ -114,13 +131,17 @@ For tracking linter errors in Ruby files run:
 - GitHub: [@gjuliao](https://github.com/Gdiazdiaz)
 - LinkedIn: [Glenda Diaz](www.linkedin.com/in/glendadiazz)
 
+👤 **Shahadat Hossain**
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/shahadat3669) [![linkedin](https://img.shields.io/badge/shahadat3669-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/shahadat3669) [![twitter](https://img.shields.io/badge/@shahadat3669-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/shahadat3669)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Adding-a-login-feature]**
+- [ ] **[likes-will-be-unique]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
